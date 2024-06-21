@@ -4,8 +4,6 @@ public class SpawnerSphere : Spawner<Sphere>
 {
     [SerializeField] private SpawnerCube _spawnerCube;
 
-    private Cube _currentCube;
-
     private void OnEnable()
     {
         _spawnerCube.Spawned += SetCube;
@@ -18,8 +16,7 @@ public class SpawnerSphere : Spawner<Sphere>
 
     private void SetCube(Cube cube)
     {
-        _currentCube = cube;
-        _currentCube.Died += Spawn;
+        cube.Died += Spawn;
     }
 
     private void Spawn(Transform transform)
